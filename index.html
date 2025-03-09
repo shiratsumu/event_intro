@@ -54,22 +54,7 @@
         border-left: 10px solid #E94434; /* 左に色をつける */
         max-width: 800px; /* カードの最大幅を制限 */
     }
-    /* 📌 スマホ対応（画面幅 600px 以下） */
-    @media (max-width: 600px) {
-        .event-card {
-            width: 90%; /* スマホではほぼ全幅に */
-            margin: 10px auto; /* 余白を小さく */
-            padding: 0; /* スマホ用の適切な余白 */
-        }
 
-        .event-card h2 {
-            font-size: 16px; /* タイトルのフォントサイズを小さめに */
-        }
-
-        .event-card p {
-            font-size: 14px; /* テキストのフォントサイズを調整 */
-        }
-    }
     /* 🔹 イベントタイトル */
     .event-card h2 {
         font-size: 18px;
@@ -106,15 +91,71 @@
         background-color: #4285F5; /* ターゲットはレッド系 */
     }
 
+    /* 📌 画面右下に追尾する投稿ボタン */
+.floating-button {
+    position: fixed;
+    bottom: 20px; /* 画面下からの距離 */
+    right: 20px; /* 画面右からの距離 */
+    width: 60px;
+    height: 60px;
+    background: rgba(235, 235, 235, 0.139); /* 透明度30%の白 */
+    backdrop-filter: blur(2px); /* すりガラス効果 */
+    border-radius: 10px; /* 角を丸く */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影をつけて浮かせる */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 📌 ホバー時のエフェクト */
+.floating-button:hover {
+    background: rgba(255, 255, 255, 0.5); /* 少し白くする */
+    transform: scale(1.1); /* 少し拡大 */
+}
+
+/* 📌 ＋のデザイン */
+.plus {
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+}
+/* 📌 ホバー時に表示される「投稿する」のデザイン */
+.tooltip {
+    position: absolute;
+    right: 80px; /* ボタンの右側に表示 */
+    background: rgba(206, 206, 206, 0.8);
+    color: rgb(82, 82, 82);
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* 📌 ホバー時に「投稿する」を表示 */
+.floating-button:hover .tooltip {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
     </style>
 </head>
 
 <body>
+    
     <header>
         <img src="images/Japan Connect Logo.png" alt="Connectロゴ" class="banner-logo">
     </header>
     
-    
+    <!-- 投稿ボタン -->
+    <a href="https://forms.gle/SknWweoeutU1EotR9" target="_blank" class="floating-button">
+        <span class="plus">+</span>
+        <span class="tooltip">投稿する</span>
+    </a>
     
 
     <!-- 🔍 検索フォーム -->
@@ -270,6 +311,6 @@
 
 </body>
 <footer>
-    <p>制作/github:@shiratsumu 協力/GDGoC Organaitherの皆さん バナーデザイン/GDGoC Chuo organaither</p>
+    <p>制作/github:@shiratsumu</p>  <p>バナーデザイン/GDGoC Chuo organaither</p><p>協力/GDGoC Organaitherの皆さん</p>
 </footer>
 </html>
