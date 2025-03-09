@@ -50,8 +50,25 @@
         border-radius: 10px; /* 角を丸く */
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
         padding: 20px;
-        margin: 15px 0;
+        margin: 15px auto;
         border-left: 10px solid #E94434; /* 左に色をつける */
+        max-width: 800px; /* カードの最大幅を制限 */
+    }
+    /* 📌 スマホ対応（画面幅 600px 以下） */
+    @media (max-width: 600px) {
+        .event-card {
+            width: 90%; /* スマホではほぼ全幅に */
+            margin: 10px auto; /* 余白を小さく */
+            padding: 15px; /* スマホ用の適切な余白 */
+        }
+
+        .event-card h2 {
+            font-size: 16px; /* タイトルのフォントサイズを小さめに */
+        }
+
+        .event-card p {
+            font-size: 14px; /* テキストのフォントサイズを調整 */
+        }
     }
     /* 🔹 イベントタイトル */
     .event-card h2 {
@@ -117,7 +134,7 @@
             <option value="社会人">社会人</option>
             <option value="エンジニア（初心者向け）">エンジニア（初心者向け）</option>
             <option value="エンジニア（中級者以上）">エンジニア（中級者以上）</option>
-            <option value="特定の技術に興味がある人（例：AI、Web開発）">特定の技術に興味がある人（例：AI、Web開発）</option>
+            <option value="特定の技術に興味がある人（例：AI、Web開発）">特定の技術に興味がある人</option>
             <option value="一般向け（初心者も参加しやすい）">一般向け（初心者も参加しやすい）</option>
             <option value="デザイナー">デザイナー</option>
         </select>
