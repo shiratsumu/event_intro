@@ -1,316 +1,345 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GDGoC 紹介イベント一覧</title>
-    <style>
-        /* 📌 バナーのデザイン */
-    header {
-        width: 100%;
-        background-color: #f7f7f7; 
-        padding: 10px 0;
-        text-align: center;
-        border-bottom: 2px solid #ddd; /* 下に線をつける */
-    }
-    body {
-        font-family: "Arial", sans-serif; /* フォントを指定 */
-        margin: 0; /* 余白をなくす */
-        padding: 0; /* 余白をなくす */
-        background-color: #f7f7f7; /* 背景色を指定 */
-    }
-    footer {
-        text-align: center; /* 中央寄せ */
-        padding: 20px 0; /* 上下の余白をつける */
-        background-color: #f7f7f7; /* 背景色を指定 */
-        border-top: 2px solid #ddd; /* 上に線をつける */
-    }
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>GDGoC 紹介イベント一覧</title>
+        <style>
+            /* 📌 バナーのデザイン */
+            header {
+                width: 100%;
+                background-color: #f7f7f7; 
+                padding: 10px 0;
+                text-align: center;
+                border-bottom: 2px solid #ddd; /* 下に線をつける */
+            }
+            body {
+                font-family: "Arial", sans-serif; /* フォントを指定 */
+                padding: 0; /* 余白をなくす */
+                background-color: #f7f7f7; /* 背景色を指定 */
+                max-width: 90%; /* 最大幅を指定 */
+                margin: 0 auto; /* 中央寄せ */
+            }
+            footer {
+                text-align: center; /* 中央寄せ */
+                padding: 20px 0; /* 上下の余白をつける */
+                background-color: #f7f7f7; /* 背景色を指定 */
+                border-top: 2px solid #ddd; /* 上に線をつける */
+            }
 
-    .banner-logo {
-        max-width: 300px; /* ロゴの最大幅 */
-        height: auto;
-    }
-    /* 🔍 検索フォームを中央寄せ */
-    .search-container {
-        text-align: center; /* 中央寄せ */
-        margin: 20px 0; /* 上下の余白をつける */
-    }
-    /* フォーム内の要素をきれいに並べる */
-    .search-container input,
-    .search-container select,
-    .search-container button {
-        margin: 5px; /* 余白を統一 */
-        padding: 10px; /* 入力しやすく */
-        font-size: 14px;
-    }
-    /* 📌 イベントをカードデザインに */
-    .event-card {
-        background-color: rgb(255, 255, 255);
-        border-radius: 10px; /* 角を丸く */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
-        padding: 20px;
-        margin: 15px auto;
-        border-left: 10px solid #E94434; /* 左に色をつける */
-        max-width: 800px; /* カードの最大幅を制限 */
-    }
+            .banner-logo {
+                max-width: 300px; /* ロゴの最大幅 */
+                height: auto;
+            }
+            /* 🔍 検索フォームを中央寄せ */
+            .search-container {
+                text-align: center; /* 中央寄せ */
+                margin: 20px 0; /* 上下の余白をつける */
+            }
+            /* フォーム内の要素をきれいに並べる */
+            .search-container input,
+            .search-container select,
+            .search-container button {
+                margin: 5px; /* 余白を統一 */
+                padding: 10px; /* 入力しやすく */
+                font-size: 14px;
+            }
+            /* 📌 イベントをカードデザインに */
+            .event-card {
+                background-color: rgb(255, 255, 255);
+                border-radius: 10px; /* 角を丸く */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+                padding: 20px;
+                margin: 15px auto;
+                border-left: 10px solid #E94434; /* 左に色をつける */
+                max-width: 800px; /* カードの最大幅を制限 */
+            }
 
-    /* 🔹 イベントタイトル */
-    .event-card h2 {
-        font-size: 18px;
-        color: #333;
-        margin-bottom: 8px;
-        padding-bottom: 5px;
-        border-bottom: 4px solid #FCBE03;
-        display: inline-block; /* 下線をタイトルの長さに合わせる */
-    }
-    
-    /* 🔹 イベントリストの点を消す */
-    #eventList {
-        list-style: none; /* リストの黒点（•）を消す */
-    }
+            /* 🔹 イベントタイトル */
+            .event-card h2 {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 8px;
+                padding-bottom: 5px;
+                border-bottom: 4px solid #FCBE03;
+                display: inline-block; /* 下線をタイトルの長さに合わせる */
+            }
+            
+            /* 🔹 イベントリストの点を消す */
+            #eventList {
+                list-style: none; /* リストの黒点（•）を消す */
+                padding: 0; /* パディングを消す */
+            }
 
-    .tags-container {
-        margin: 10px 0;
-    }
+            .tags-container {
+                margin: 10px 0;
+            }
 
-    .tag {
-        display: inline-block;
-        padding: 5px 10px;
-        margin: 2px;
-        border-radius: 10px;
-        font-size: 12px;
-        color: white;
-    }
+            .tag {
+                display: inline-block;
+                padding: 5px 10px;
+                margin: 2px;
+                border-radius: 10px;
+                font-size: 12px;
+                color: white;
+            }
 
-    .tag-shape {
-        background-color: #119D58; /* 開催形態はグリーン系 */
-    }
+            .tag-shape {
+                background-color: #119D58; /* 開催形態はグリーン系 */
+            }
 
-    .tag-target {
-        background-color: #4285F5; /* ターゲットはレッド系 */
-    }
+            .tag-target {
+                background-color: #4285F5; /* ターゲットはレッド系 */
+            }
 
-    /* 📌 画面右下に追尾する投稿ボタン */
-.floating-button {
-    position: fixed;
-    bottom: 20px; /* 画面下からの距離 */
-    right: 20px; /* 画面右からの距離 */
-    width: 60px;
-    height: 60px;
-    background: rgba(235, 235, 235, 0.139); /* 透明度30%の白 */
-    backdrop-filter: blur(2px); /* すりガラス効果 */
-    border-radius: 10px; /* 角を丸く */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影をつけて浮かせる */
-    transition: all 0.3s ease-in-out;
-}
+            /* 📌 画面右下に追尾する投稿ボタン */
+            .floating-button {
+                position: fixed;
+                bottom: 20px; /* 画面下からの距離 */
+                right: 20px; /* 画面右からの距離 */
+                width: 60px;
+                height: 60px;
+                background: rgba(235, 235, 235, 0.139); /* 透明度30%の白 */
+                backdrop-filter: blur(2px); /* すりガラス効果 */
+                border-radius: 10px; /* 角を丸く */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 影をつけて浮かせる */
+                transition: all 0.3s ease-in-out;
+            }
 
-/* 📌 ホバー時のエフェクト */
-.floating-button:hover {
-    background: rgba(255, 255, 255, 0.5); /* 少し白くする */
-    transform: scale(1.1); /* 少し拡大 */
-}
+            /* 📌 ホバー時のエフェクト */
+            .floating-button:hover {
+                background: rgba(255, 255, 255, 0.5); /* 少し白くする */
+                transform: scale(1.1); /* 少し拡大 */
+            }
 
-/* 📌 ＋のデザイン */
-.plus {
-    font-size: 50px;
-    color: white;
-    font-weight: bold;
-}
-/* 📌 ホバー時に表示される「投稿する」のデザイン */
-.tooltip {
-    position: absolute;
-    right: 80px; /* ボタンの右側に表示 */
-    background: rgba(206, 206, 206, 0.8);
-    color: rgb(82, 82, 82);
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    white-space: nowrap;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
+            /* 📌 ＋のデザイン */
+            .plus {
+                font-size: 50px;
+                color: #cecece;
+                font-weight: bold;
+            }
+            /* 📌 ホバー時に表示される「投稿する」のデザイン */
+            .tooltip {
+                position: absolute;
+                right: 80px; /* ボタンの右側に表示 */
+                background: rgba(206, 206, 206, 0.8);
+                color: rgb(82, 82, 82);
+                padding: 8px 12px;
+                border-radius: 5px;
+                font-size: 14px;
+                white-space: nowrap;
+                opacity: 0;
+                transform: translateX(10px);
+                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            }
 
-/* 📌 ホバー時に「投稿する」を表示 */
-.floating-button:hover .tooltip {
-    opacity: 1;
-    transform: translateX(0px);
-}
+            /* 📌 ホバー時に「投稿する」を表示 */
+            .floating-button:hover .tooltip {
+                opacity: 1;
+                transform: translateX(0px);
+            }
 
-    </style>
-</head>
+            /* レスポンシブデザイン */
+            @media (max-width: 600px) {
+            .event-card {
+                padding: 15px; /* スマホ用にパディングを調整 */
+                font-size: 11px;
+            }
+            .event-card h2 {
+                font-size: 16px; /* スマホ用にフォントサイズを調整 */
+            }
+            
 
-<body>
-    
-    <header>
-        <img src="images/Japan Connect Logo.png" alt="Connectロゴ" class="banner-logo">
-    </header>
-    
-    <!-- 投稿ボタン -->
-    <a href="https://forms.gle/SknWweoeutU1EotR9" target="_blank" class="floating-button">
-        <span class="plus">+</span>
-        <span class="tooltip">投稿する</span>
-    </a>
-    
-
-    <!-- 🔍 検索フォーム -->
-    <div class="search-container">
-        <input type="text" id="keywordSearch" placeholder="キーワードで検索">
-        <select id="shapeFilter">
-            <option value="">開催形態を選択</option>
-            <option value="オンライン">オンライン</option>
-            <option value="オフライン">オフライン</option>
-            <option value="ハイブリッド">ハイブリッド</option>
-            <option value="長期開催">長期開催</option>
-            <option value="合同イベント">合同イベント</option>
-        </select>
-        <select id="targetFilter">
-            <option value="">ターゲットを選択</option>
-            <option value="学生">学生</option>
-            <option value="社会人">社会人</option>
-            <option value="エンジニア（初心者向け）">エンジニア（初心者向け）</option>
-            <option value="エンジニア（中級者以上）">エンジニア（中級者以上）</option>
-            <option value="特定の技術に興味がある人（例：AI、Web開発）">特定の技術に興味がある人</option>
-            <option value="一般向け（初心者も参加しやすい）">一般向け（初心者も参加しやすい）</option>
-            <option value="デザイナー">デザイナー</option>
-        </select>
-        <button onclick="applyFilters()">🔍</button>
-    </div>
-
-    <ul id="eventList"></ul>
-
-    <script>
-        let eventData = []; // 取得したデータを保持する変数
-
-        fetch("https://script.google.com/macros/s/AKfycbzXiLglzFCwF7kesv4IXrC1nFBKgVbe7qpmU4tn149W4kXCuh3CCL10ncAgOwkBt_CyAw/exec")
-            .then(response => response.json())
-            .then(data => {
-        eventData = data; // データを保持
-        renderEvents(data); // 初回表示
-        })
-        .catch(error => console.error("エラー:", error));
-        
-
-        // イベントリストを表示
-        function renderEvents(filteredData) {
-            let list = document.getElementById("eventList");
-            list.innerHTML = ""; // リストをクリア
+            .tag {
+                display: inline-block;
+                padding: 5px 10px;
+                margin: 1px;
+                border-radius: 10px;
+                font-size: 8px;
+                color: white;
+            }
+            }
 
 
-            filteredData.forEach(event => {
-                    let li = document.createElement("li");
-                    li.classList.add("event-card"); // カードデザインのクラスを追加
-                    let eventLink = event["リンク"];
-                    let formattedDate = formatDate(event["開催日"]); // 日付をフォーマット
+        </style>
+        <script>
+            let eventData = []; // 取得したデータを保持する変数
 
-                    let chapterName = event["チャプター名"];
-                    if (event["協力"] && event["協力"].trim() !== "") {
-                        chapterName += `×${event["協力"]}`;
-                    }
+            fetch("https://script.google.com/macros/s/AKfycbzXiLglzFCwF7kesv4IXrC1nFBKgVbe7qpmU4tn149W4kXCuh3CCL10ncAgOwkBt_CyAw/exec")
+                .then(response => response.json())
+                .then(data => {
+            eventData = data; // データを保持
+            renderEvents(data); // 初回表示
+            })
+            .catch(error => console.error("エラー:", error));
 
-                    // 開催形態とターゲットのタグ風表示（それぞれ色を変える）
-                    function createTags(data, type) {
-                        if (!data || data.trim() === "") return "";
-                        let colorClass = type === "開催形態" ? "tag-shape" : "tag-target"; // 開催形態とターゲットで色を変える
-                        return data.split(",").map(tag => `<span class="tag ${colorClass}">${tag.trim()}</span>`).join(" ");
-                    }
+            
+            
 
-                    let eventShapeTags = createTags(event["開催形態"], "開催形態");
-                    let eventTargetTags = createTags(event["ターゲット"], "ターゲット");
-                    let eventTags = createTags(event["開催形態"]) + createTags(event["ターゲット"]);
+            // イベントリストを表示
+            function renderEvents(filteredData) {
+                let list = document.getElementById("eventList");
+                list.innerHTML = ""; // リストをクリア
 
-                    // ConnpassのURLならOGP画像を取得して表示
-                    if (eventLink.includes("connpass.com")) {
-                        fetchOGP(eventLink).then(thumbnail => {
-                            li.innerHTML = `<h2>  ${event["イベント名"]} (${chapterName})</h2><br>
 
-                                            <img src="${thumbnail}" alt="Event Thumbnail" style="width:100px;"><br>
+                filteredData.forEach(event => {
+                        let li = document.createElement("li");
+                        li.classList.add("event-card"); // カードデザインのクラスを追加
+                        let eventLink = event["リンク"];
+                        let formattedDate = formatDate(event["開催日"]); // 日付をフォーマット
+
+                        let chapterName = event["チャプター名"];
+                        if (event["協力"] && event["協力"].trim() !== "") {
+                            chapterName += `×${event["協力"]}`;
+                        }
+
+                        // 開催形態とターゲットのタグ風表示（それぞれ色を変える）
+                        function createTags(data, type) {
+                            if (!data || data.trim() === "") return "";
+                            let colorClass = type === "開催形態" ? "tag-shape" : "tag-target"; // 開催形態とターゲットで色を変える
+                            return data.split(",").map(tag => `<span class="tag ${colorClass}">${tag.trim()}</span>`).join(" ");
+                        }
+
+                        let eventShapeTags = createTags(event["開催形態"], "開催形態");
+                        let eventTargetTags = createTags(event["ターゲット"], "ターゲット");
+                        let eventTags = createTags(event["開催形態"]) + createTags(event["ターゲット"]);
+
+                        // ConnpassのURLならOGP画像を取得して表示
+                        if (eventLink.includes("connpass.com")) {
+                            fetchOGP(eventLink).then(thumbnail => {
+                                li.innerHTML = `<h2>  ${event["イベント名"]} (${chapterName})</h2><br>
+
+                                                <img src="${thumbnail}" alt="Event Thumbnail" style="width:100px;"><br>
+                                                <div class="tags-container">
+                                                <p>${eventShapeTags}</p>
+                                                <p> ${eventTargetTags}</p>
+                                                </div>
+                                                <strong>📅 開催日:</strong> ${formattedDate}<br>
+                                                <strong>参加人数：</strong> ${event["参加人数"]}人<br>
+                                                <strong>概要：</strong> ${event["概要"]}<br>
+                                                <strong>工夫点：</strong> ${event["工夫点"]}<br>
+                                                <strong>課題点：</strong> ${event["課題"]}<br>
+                                                <a href="${eventLink}" target="_blank">イベントページを見る</a>`;
+                                list.appendChild(li);
+                            });
+                        } else {
+                            // 通常のリンク表示（Connpass以外）
+                            li.innerHTML = `<h2>${event["イベント名"]}(${chapterName})</h2> 
                                             <div class="tags-container">
                                             <p>${eventShapeTags}</p>
                                             <p> ${eventTargetTags}</p>
                                             </div>
-                                            <strong>📅 開催日:</strong> ${formattedDate}<br>
+                                            <strong>📅 開催日:</strong>  ${formattedDate}<br>
                                             <strong>参加人数：</strong> ${event["参加人数"]}人<br>
                                             <strong>概要：</strong> ${event["概要"]}<br>
                                             <strong>工夫点：</strong> ${event["工夫点"]}<br>
                                             <strong>課題点：</strong> ${event["課題"]}<br>
-                                            <a href="${eventLink}" target="_blank">イベントページを見る</a>`;
+                                            `;
                             list.appendChild(li);
-                        });
-                    } else {
-                        // 通常のリンク表示（Connpass以外）
-                        li.innerHTML = `<h2>${event["イベント名"]}(${chapterName})</h2> 
-                                        <div class="tags-container">
-                                        <p>${eventShapeTags}</p>
-                                        <p> ${eventTargetTags}</p>
-                                        </div>
-                                        <strong>📅 開催日:</strong>  ${formattedDate}<br>
-                                        <strong>参加人数：</strong> ${event["参加人数"]}人<br>
-                                        <strong>概要：</strong> ${event["概要"]}<br>
-                                        <strong>工夫点：</strong> ${event["工夫点"]}<br>
-                                        <strong>課題点：</strong> ${event["課題"]}<br>
-                                        `;
-                        list.appendChild(li);
-                    }
-                });
+                        }
+                    });
+                }
+
+            // 日付をYYYY/MM/DDに変換する関数
+            function formatDate(isoDateString) {
+                let date = new Date(isoDateString);
+                date.setHours(date.getHours() + 9); // UTC→JST（9時間加算）
+
+                let year = date.getFullYear();
+                let month = String(date.getMonth() + 1).padStart(2, "0"); // 0から始まるので+1
+                let day = String(date.getDate()).padStart(2, "0");
+
+                return `${year}/${month}/${day}`;
             }
 
-        // 日付をYYYY/MM/DDに変換する関数
-        function formatDate(isoDateString) {
-            let date = new Date(isoDateString);
-            date.setHours(date.getHours() + 9); // UTC→JST（9時間加算）
+            function fetchOGP(eventUrl) {
+                return fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(eventUrl)}`) // CORS回避
+                    .then(response => response.json())
+                    .then(data => {
+                        let parser = new DOMParser();
+                        let doc = parser.parseFromString(data.contents, "text/html");
+                        let ogImageTag = doc.querySelector('meta[property="og:image"]');
+                        return ogImageTag ? ogImageTag.content : "https://via.placeholder.com/100"; // 画像がなければデフォ画像
+                    })
+                    .catch(() => "https://via.placeholder.com/100"); // 取得失敗時
+            }
 
-            let year = date.getFullYear();
-            let month = String(date.getMonth() + 1).padStart(2, "0"); // 0から始まるので+1
-            let day = String(date.getDate()).padStart(2, "0");
+            // 検索フィルターを適用
+            function applyFilters() {
+                let keyword = document.getElementById("keywordSearch").value.toLowerCase();
+                let shapeFilter = document.getElementById("shapeFilter").value;
+                let targetFilter = document.getElementById("targetFilter").value;
 
-            return `${year}/${month}/${day}`;
-        }
+                let filteredData = eventData.filter(event => {
+                    let matchesKeyword = keyword === "" || 
+                        (event["イベント名"] && event["イベント名"].toLowerCase().includes(keyword)) ||
+                        (event["概要"] && event["概要"].toLowerCase().includes(keyword)) ||
+                        (event["工夫点"] && event["工夫点"].toLowerCase().includes(keyword)) ||
+                        (event["課題"] && event["課題"].toLowerCase().includes(keyword)) ||
+                        (event["チャプター名"] && event["チャプター名"].toLowerCase().includes(keyword)) ||
+                        (event["協力"] && event["協力"].toLowerCase().includes(keyword));
 
-        function fetchOGP(eventUrl) {
-            return fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(eventUrl)}`) // CORS回避
-                .then(response => response.json())
-                .then(data => {
-                    let parser = new DOMParser();
-                    let doc = parser.parseFromString(data.contents, "text/html");
-                    let ogImageTag = doc.querySelector('meta[property="og:image"]');
-                    return ogImageTag ? ogImageTag.content : "https://via.placeholder.com/100"; // 画像がなければデフォ画像
-                })
-                .catch(() => "https://via.placeholder.com/100"); // 取得失敗時
-        }
+                    let matchesShape = shapeFilter === "" || (event["開催形態"] && event["開催形態"].includes(shapeFilter));
+                    let matchesTarget = targetFilter === "" || (event["ターゲット"] && event["ターゲット"].includes(targetFilter));
 
-        // 検索フィルターを適用
-        function applyFilters() {
-            let keyword = document.getElementById("keywordSearch").value.toLowerCase();
-            let shapeFilter = document.getElementById("shapeFilter").value;
-            let targetFilter = document.getElementById("targetFilter").value;
+                    return matchesKeyword && matchesShape && matchesTarget;
+                });
 
-            let filteredData = eventData.filter(event => {
-                let matchesKeyword = keyword === "" || 
-                    (event["イベント名"] && event["イベント名"].toLowerCase().includes(keyword)) ||
-                    (event["概要"] && event["概要"].toLowerCase().includes(keyword)) ||
-                    (event["工夫点"] && event["工夫点"].toLowerCase().includes(keyword)) ||
-                    (event["課題"] && event["課題"].toLowerCase().includes(keyword)) ||
-                    (event["チャプター名"] && event["チャプター名"].toLowerCase().includes(keyword)) ||
-                    (event["協力"] && event["協力"].toLowerCase().includes(keyword));
+                renderEvents(filteredData); // フィルタリング後のイベントを表示
+            }
+        </script>
+    </head>
 
-                let matchesShape = shapeFilter === "" || (event["開催形態"] && event["開催形態"].includes(shapeFilter));
-                let matchesTarget = targetFilter === "" || (event["ターゲット"] && event["ターゲット"].includes(targetFilter));
+    <body>
+        
+        <header>
+            <img src="images/Japan Connect Logo.png" alt="Connectロゴ" class="banner-logo">
+        </header>
+        
+        <!-- 投稿ボタン -->
+        <a href="https://forms.gle/SknWweoeutU1EotR9" class="floating-button">
+            <span class="plus">+</span>
+            <span class="tooltip">投稿する</span>
+        </a>
+        
 
-                return matchesKeyword && matchesShape && matchesTarget;
-            });
+        <!-- 🔍 検索フォーム -->
+        <div class="search-container">
+            <input type="text" id="keywordSearch" placeholder="キーワードで検索">
+            <select id="shapeFilter">
+                <option value="">開催形態を選択</option>
+                <option value="オンライン">オンライン</option>
+                <option value="オフライン">オフライン</option>
+                <option value="ハイブリッド">ハイブリッド</option>
+                <option value="長期開催">長期開催</option>
+                <option value="合同イベント">合同イベント</option>
+            </select>
+            <select id="targetFilter">
+                <option value="">ターゲットを選択</option>
+                <option value="学生">学生</option>
+                <option value="社会人">社会人</option>
+                <option value="エンジニア（初心者向け）">エンジニア（初心者向け）</option>
+                <option value="エンジニア（中級者以上）">エンジニア（中級者以上）</option>
+                <option value="特定の技術に興味がある人（例：AI、Web開発）">特定の技術に興味がある人</option>
+                <option value="一般向け（初心者も参加しやすい）">一般向け（初心者も参加しやすい）</option>
+                <option value="デザイナー">デザイナー</option>
+            </select>
+            <button onclick="applyFilters()">🔍</button>
+        </div>
+        
 
-            renderEvents(filteredData); // フィルタリング後のイベントを表示
-        }
-    </script>
+        <ul id="eventList"></ul>
 
-</body>
-<footer>
-    <p>制作/github:@shiratsumu</p>  <p>バナーデザイン/GDGoC Chuo Organizer</p><p>協力/GDGoC Organizerの皆さん</p>
-</footer>
+
+        <footer>
+             <p>バナーデザイン/GDGoC TCU Organizer</p><p>協力/GDGoC Organizerの皆さん</p>
+        </footer>
+
+    </body>
+
 </html>
